@@ -4,7 +4,7 @@ import User from '../../src/models/User';
 import jwt from 'jsonwebtoken';
 
 const cors = Cors({
-  origin: 'https://f-frontend-rho.vercel.app',
+  origin: 'hhttps://front-end-f.vercel.app',
   methods: ['GET', 'PUT'],
   credentials: true,
 });
