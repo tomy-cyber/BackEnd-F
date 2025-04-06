@@ -5,7 +5,7 @@ import User from "../../../src/models/User"
 // CORS Setup
 const cors = Cors({
   methods: ["PUT", "OPTIONS"],
-  origin: ["https://front-end-f.vercel.app", "http://localhost:3002"],
+  origin: ["https://front-end-f.vercel.app", "https://admin-panel-kappa-lyart.vercel.app"],
   credentials: true,
 })
 
