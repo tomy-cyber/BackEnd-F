@@ -60,7 +60,7 @@ import connectToDatabase from '../../src/lib/connectDB';
 import User from '../../src/models/User';
 
 const cors = Cors({
-  origin: 'http://localhost:3002',
+  origin: 'https://admin-panel-kappa-lyart.vercel.app',
   methods: ['PUT'],
   credentials: true,
 });
