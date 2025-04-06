@@ -119,7 +119,7 @@ import bcrypt from "bcryptjs"
 import Cors from "cors"
 
 const cors = Cors({
-  origin: ["https://front-end-f.vercel.app", "http://localhost:3002"],
+  origin: ["https://front-end-f.vercel.app", "https://admin-panel-kappa-lyart.vercel.app"],
   methods: ["GET", "POST", "PUT", "DELETE", "OPTIONS"],
   allowedHeaders: ["*"],
   credentials: true,
