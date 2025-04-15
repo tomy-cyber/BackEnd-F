@@ -50,45 +50,45 @@ export default async function handler(req, res) {
       }
     }
 
-    // Try CoinGecko if Binance failed or wasn't requested
-    if (btcPrice === null && (source === "coingecko" || source === "auto")) {
-      try {
-        const coinGeckoResponse = await fetch(
-          "https://api.coingecko.com/api/v3/simple/price?ids=bitcoin&vs_currencies=usd",
-        )
+    // // Try CoinGecko if Binance failed or wasn't requested
+    // if (btcPrice === null && (source === "coingecko" || source === "auto")) {
+    //   try {
+    //     const coinGeckoResponse = await fetch(
+    //       "https://api.coingecko.com/api/v3/simple/price?ids=bitcoin&vs_currencies=usd",
+    //     )
 
-        if (coinGeckoResponse.ok) {
-          const coinGeckoData = await coinGeckoResponse.json()
-          const price = coinGeckoData.bitcoin?.usd
+    //     if (coinGeckoResponse.ok) {
+    //       const coinGeckoData = await coinGeckoResponse.json()
+    //       const price = coinGeckoData.bitcoin?.usd
 
-          if (!isNaN(price) && price > MIN_REALISTIC_BTC_PRICE && price < MAX_REALISTIC_BTC_PRICE) {
-            btcPrice = price
-            priceSource = "coingecko"
-          }
-        }
-      } catch (error) {
-        console.error("CoinGecko API error:", error)
-      }
-    }
+    //       if (!isNaN(price) && price > MIN_REALISTIC_BTC_PRICE && price < MAX_REALISTIC_BTC_PRICE) {
+    //         btcPrice = price
+    //         priceSource = "coingecko"
+    //       }
+    //     }
+    //   } catch (error) {
+    //     console.error("CoinGecko API error:", error)
+    //   }
+    // }
 
-    // Try Coinbase as a third option
-    if (btcPrice === null && (source === "coinbase" || source === "auto")) {
-      try {
-        const coinbaseResponse = await fetch("https://api.coinbase.com/v2/prices/BTC-USD/spot")
+    // // Try Coinbase as a third option
+    // if (btcPrice === null && (source === "coinbase" || source === "auto")) {
+    //   try {
+    //     const coinbaseResponse = await fetch("https://api.coinbase.com/v2/prices/BTC-USD/spot")
 
-        if (coinbaseResponse.ok) {
-          const coinbaseData = await coinbaseResponse.json()
-          const price = Number.parseFloat(coinbaseData.data?.amount)
+    //     if (coinbaseResponse.ok) {
+    //       const coinbaseData = await coinbaseResponse.json()
+    //       const price = Number.parseFloat(coinbaseData.data?.amount)
 
-          if (!isNaN(price) && price > MIN_REALISTIC_BTC_PRICE && price < MAX_REALISTIC_BTC_PRICE) {
-            btcPrice = price
-            priceSource = "coinbase"
-          }
-        }
-      } catch (error) {
-        console.error("Coinbase API error:", error)
-      }
-    }
+    //       if (!isNaN(price) && price > MIN_REALISTIC_BTC_PRICE && price < MAX_REALISTIC_BTC_PRICE) {
+    //         btcPrice = price
+    //         priceSource = "coinbase"
+    //       }
+    //     }
+    //   } catch (error) {
+    //     console.error("Coinbase API error:", error)
+    //   }
+    // }
 
     // If all APIs failed or returned unrealistic values, throw an error
     if (btcPrice === null) {
