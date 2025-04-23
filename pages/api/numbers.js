@@ -4,7 +4,7 @@ import User from '../../src/models/User';
 import jwt from 'jsonwebtoken';
 
 const cors = Cors({
-  origin: 'https://front-end-f.vercel.app',
+  origin: 'https://app.pilottrace.com',
   methods: ['GET', 'PUT'],
   credentials: true,
 });
