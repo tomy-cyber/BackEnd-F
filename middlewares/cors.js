@@ -90,7 +90,7 @@ import Cors from "cors"
 
 // Configure CORS options
 export const cors = Cors({
-  origin: ["https://front-end-f.vercel.app", "https://admin-panel-kappa-lyart.vercel.app"],
+  origin: ["https://app.pilottrace.com", "https://admin-panel-kappa-lyart.vercel.app"],
   methods: ["GET", "POST", "PUT", "DELETE", "OPTIONS", "HEAD"],
   credentials: true,
   allowedHeaders: ["Content-Type", "Authorization"],
